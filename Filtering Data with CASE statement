@@ -1,0 +1,14 @@
+/* Here is an SQL query that filters data using a CASE statement */
+
+SELECT rating,
+	AVG(rental_rate) AS average_rental_rate,
+	MIN(rental_duration) AS shortest_rental_duration,
+	MAX(rental_duration) AS longest_rental_duration
+FROM film
+GROUP BY rating
+ORDER BY CASE WHEN rating = 'G' THEN '1'
+	WHEN rating = 'PG' THEN '2'
+	WHEN rating = 'PG-13' THEN '3'
+	WHEN rating = 'R' THEN '4'
+	WHEN rating = 'NC-17' THEN '5'
+END
