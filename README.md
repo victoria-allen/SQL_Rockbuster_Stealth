@@ -15,3 +15,5 @@ For this project the following tools, programs, and applications were used:
 * Tableau - for visualizations
 ## Resources
 Relevant resources will be posted here.
+### Tableau Visualizations for this project
+[This](https://public.tableau.com/views/3_10pres/customerlocale?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) is a link to visualizations that showfindings from this project. These visualizations were created using results from SQL queries.
