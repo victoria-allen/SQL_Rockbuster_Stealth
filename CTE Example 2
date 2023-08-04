@@ -1,0 +1,25 @@
+/* 
+Here is an SQL query that uses a common table expression
+This query aims to find the average amount paid by the top 5 Rockbuster Stealth customers 
+*/
+
+WITH total_amount_paid_cte(customer_id, customer_first_name, customer_last_name, country, city,
+total_amount_paid) AS
+(SELECT A.customer_id,
+A.first_name AS customer_first_name,
+A.last_name AS customer_last_name,
+D.country,
+C.city,
+SUM(E.amount) AS total_amount_paid
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN ('London', 'Aurora', 'Santiago de Compestela', 'Iwaki', 'Shanwei', 'Nador',
+'Tianjin', 'Benguela', 'Rustenburg', 'Newcastle')
+GROUP BY country, city, first_name, last_name, A.customer_id
+ORDER BY SUM(amount) DESC
+LIMIT 5)
+SELECT AVG(total_amount_paid) as “Average”
+FROM total_amount_paid_cte
