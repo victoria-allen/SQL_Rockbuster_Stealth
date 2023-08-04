@@ -1,0 +1,10 @@
+/* 
+An example of fixing non-uniform data
+In this instance, all films with rating 'G' were given a uniform value.
+*/
+
+UPDATE film
+SET rating = 'G'
+WHERE rating IN ('gen',
+                 'g',
+                 'General')
